@@ -2,4 +2,5 @@
   template:
     src: "files/{{ env }}/haproxy.cfg"
     dest: "{{ working_path }}/{{ config_filename }}"
-  become: yes
+  notify:
+      - restart-haproxy-service
