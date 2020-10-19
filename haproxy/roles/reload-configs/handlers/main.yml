@@ -1,3 +1,3 @@
-- name: restart-haproxy-service
+- name: restart haproxy service
   shell:
     cmd: docker kill --signal USR2 $(docker container ls --filter name=haproxy-service --quiet)

@@ -3,4 +3,4 @@
     src: "files/{{ env }}/haproxy.cfg"
     dest: "{{ working_path }}/{{ config_filename }}"
   notify:
-      - restart-haproxy-service
+      - restart haproxy service
