@@ -1,0 +1,15 @@
+[local]
+10.10.50.14
+10.10.50.18
+10.10.50.19
+
+[kbt]
+10.2.189.61
+10.2.189.62
+10.2.189.63
+10.2.189.64
+10.2.189.65
+10.2.189.69
+
+[kbt:vars]
+ansible_ssh_common_args: '-o ProxyCommand="ssh -p 8837 -W %h:%p -q l1uat@l1deploy.starixplay.com"'

@@ -1,0 +1,3 @@
+---
+proxy_kbt:
+    http_proxy: http://l1deploy.starixplay.com:8837
