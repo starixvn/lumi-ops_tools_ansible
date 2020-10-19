@@ -12,4 +12,4 @@
 10.2.189.69
 
 [kbt:vars]
-ansible_ssh_common_args: '-o ProxyCommand="ssh -p 8837 -W %h:%p -q l1uat@l1deploy.starixplay.com"'
+ansible_ssh_common_args='-o ProxyCommand="ssh -p 8837 -W %h:%p -q l1uat@l1deploy.starixplay.com"'
