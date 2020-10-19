@@ -1,6 +1,5 @@
 - name: Copy HAProxy configuration in place.
   template:
-    src: "files/{{ haproxy_configs }}.haproxy.cfg.j2"
-    dest: /etc/haproxy/haproxy.cfg
-    validate: haproxy -f %s -c
+    src: "files/local/haproxy.cfg"
+    dest: /var/www/haproxy.cfg
   become: yes
