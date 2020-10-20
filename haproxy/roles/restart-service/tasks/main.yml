@@ -1,2 +1,3 @@
 - name: Restart service
-  notify: restart haproxy service
+  shell: docker kill --signal USR2 $(docker container ls --filter name=haproxy-service --quiet)
+  ignore_errors: yes
