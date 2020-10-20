@@ -1,7 +1,8 @@
 - name: Copy all configurations
   include_role:
     name: sync-configs
+  notify: restart haproxy service
 
-- name: Restart service
-  shell: docker kill --signal USR2 $(docker container ls --filter name=haproxy-service --quiet)
-  ignore_errors: yes
+# - name: Restart service
+#   shell: docker kill --signal USR2 $(docker container ls --filter name=haproxy-service --quiet)
+#   ignore_errors: yes
