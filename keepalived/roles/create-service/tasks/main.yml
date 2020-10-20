@@ -21,14 +21,14 @@
   set_fact:
     keepalived_role: 'MASTER'
     keepalived_priority: '200'
-  when: 'keepalived_master == true'
+  when: '{{ keepalived_master }} == true'
   become: yes
 
 - name: Set keepalived variables for backup server
   set_fact:
     keepalived_role: 'BACKUP'
     keepalived_priority: '100'
-  when: 'keepalived_master == false'
+  when: '{{ keepalived_master }} == false'
   become: yes
 
 - name: Create keepalived conf file
