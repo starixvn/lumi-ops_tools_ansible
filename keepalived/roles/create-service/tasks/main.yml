@@ -1,0 +1,47 @@
+---
+- name: Check if keepalived exists
+  stat: path=/etc/init.d/keepalived
+  register: keepalived_status
+
+- name: Update apt packages
+  apt:
+    update_cache: yes
+  become: yes
+  when:
+    - not keepalived_status.stat.exists
+
+- name: Install a list of packages
+    apt:
+      pkg:
+      - linux-headers-$(uname -r)
+      - keepalived
+    when:
+      - not keepalived_status.stat.exists
+    
+- name: Set keepalived variables for master server
+  set_fact:
+    keepalived_role: "MASTER"
+    keepalived_priority: "200"
+  when: "keepalived_master == true"
+  become: yes
+
+- name: Set keepalived variables for backup server
+  set_fact:
+    keepalived_role: "BACKUP"
+    keepalived_priority: "100"
+  when: "keepalived_master == false"
+  become: yes
+
+- name: Create keepalived conf file
+    template:
+    src: keepalived.conf.j2
+    dest: "{{ keepalived_conf_path }}"
+    notify: Restart keepalived
+    become: yes
+
+- name: Start keepalived
+  service:
+    name: keepalived
+    state: started
+    enabled: yes
+  become: yes

@@ -1,0 +1,21 @@
+vrrp_script haproxy_container {
+    script "/usr/bin/docker container ls --filter name=haproxy-service | /bin/grep haproxy-service"
+    interval 5
+    weight -20
+    fall 2
+    rise 2
+}
+
+vrrp_instance VI_1 {
+    interface {{ network_interface }}
+    state {{ keepalived_role }}
+    virtual_router_id 205
+    priority {{ keepalived_priority }}
+
+    virtual_ipaddress {
+        {{ keepalived_virtual_ip }}
+    }
+    track_script {
+        haproxy_container
+    }
+}
