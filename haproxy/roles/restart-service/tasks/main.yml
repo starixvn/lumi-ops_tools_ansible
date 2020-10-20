@@ -4,5 +4,5 @@
   register: copy_config
 
 - name: Restart service
-  msg: '{{copy_config.changed}}'
+  debug: msg='{{copy_config.changed}}'
   notify: restart haproxy service
