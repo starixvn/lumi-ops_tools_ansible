@@ -1,4 +1,0 @@
-- name: Reload configs
-  include_role:
-    name: sync-configs
-  notify: restart haproxy service

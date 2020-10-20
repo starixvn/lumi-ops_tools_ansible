@@ -1,5 +1,7 @@
 ---
 - hosts: all
   roles:
-  - role: reload-configs
+  - role: sync-configs
+    tag: reload-configs
+  - role: restart-service
     tags: reload-configs

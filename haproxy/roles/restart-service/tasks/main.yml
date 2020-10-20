@@ -1,0 +1,2 @@
+- name: Restart service
+  notify: restart haproxy service
