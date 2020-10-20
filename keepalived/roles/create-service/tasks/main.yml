@@ -16,6 +16,7 @@
       - keepalived
   when:
     - not keepalived_status.stat.exists
+  become: yes
 
 - name: Set keepalived variables for master server
   set_fact:
