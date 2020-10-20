@@ -35,7 +35,7 @@
   template:
     src: files/keepalived.conf.j2
     dest: '{{ keepalived_conf_path }}'
-    notify: restart keepalived
+  notify: restart keepalived
   become: yes
 
 - name: Start keepalived
