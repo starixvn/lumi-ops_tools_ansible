@@ -13,8 +13,8 @@
 - name: Install a list of packages
     apt:
       pkg:
-      - linux-headers-$(uname -r)
-      - keepalived
+        - linux-headers-$(uname -r)
+        - keepalived
     when:
       - not keepalived_status.stat.exists
     
