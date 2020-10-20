@@ -1,6 +1,5 @@
-- name: Copy HAProxy configuration in place.
-  template:
-    src: "files/{{ env }}/haproxy.cfg"
-    dest: "{{ working_path }}/{{ config_filename }}"
+---
+- name: Reload configs
+  include_role:
+    name: sync-configs
   notify: restart haproxy service
-  become: yes
