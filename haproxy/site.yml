@@ -1,7 +1,7 @@
 ---
 - hosts: all
   roles:
-  - role: sync-configs
-    tag: reload-configs
   - role: restart-service
+    include_role:
+      name: sync-configs
     tags: reload-configs
