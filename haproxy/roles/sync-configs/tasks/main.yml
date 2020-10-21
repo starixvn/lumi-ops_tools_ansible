@@ -2,6 +2,7 @@
   file:
     path: '{{ working_path }}'
     state: directory
+  become: yes
 
 - name: Copy HAProxy configuration.
   template:
