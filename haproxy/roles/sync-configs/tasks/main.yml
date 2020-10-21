@@ -1,9 +1,9 @@
-- name: ansible create directory example
+- name: Create HAProxy directory
   file:
     path: '{{ working_path }}'
     state: directory
 
-- name: copy HAProxy configuration.
+- name: Copy HAProxy configuration.
   template:
     src: 'files/{{ env }}/haproxy.cfg'
     dest: '{{ working_path }}/{{ config_filename }}'
