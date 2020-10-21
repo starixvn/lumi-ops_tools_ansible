@@ -1,11 +1,16 @@
+- name: ansible create directory example
+  file:
+    path: '{{ working_path }}'
+    state: directory
+
 - name: copy HAProxy configuration.
   template:
-    src: "files/{{ env }}/haproxy.cfg"
-    dest: "{{ working_path }}/{{ config_filename }}"
+    src: 'files/{{ env }}/haproxy.cfg'
+    dest: '{{ working_path }}/{{ config_filename }}'
   become: yes
 
 - name: Copy whitelist configuration.
   template:
-    src: "files/whitelisted.ips"
-    dest: "{{ working_path }}/whitelisted.ips"
+    src: 'files/whitelisted.ips'
+    dest: '{{ working_path }}/whitelisted.ips'
   become: yes
