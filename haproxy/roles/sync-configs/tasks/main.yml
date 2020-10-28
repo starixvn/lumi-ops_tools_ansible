@@ -30,10 +30,9 @@
 
 - name: Build HAProxy container for syntax check
   docker_image:
-    name: haproxy-check-config
     build:
       path: '{{ working_path }}'
-      source: build
+      name: haproxy-check-config
     state: present
 
 - name: Check HAProxy config
