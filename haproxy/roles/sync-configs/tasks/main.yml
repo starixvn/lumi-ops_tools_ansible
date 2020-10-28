@@ -10,17 +10,10 @@
     dest: '{{ working_path }}/config'
   become: yes
 
-- name: Recursively find haproxy config file
-  find:
-    paths: '{{ working_path }}/config/{{ env }}'
-    recurse: yes
-  register: config_files
-
 - name: Build HAProxy configurations
   assemble:
     src: '{{ working_path }}/config/{{ env }}'
     dest: '{{ working_path }}/{{ config_filename }}'
-    regexp: '/*/*.cfg'
   become: yes
 
 # - name: Copy HAProxy configuration.
