@@ -6,7 +6,7 @@
 
 - name: Build HAProxy configurations
   script:
-    cmd: scripts/build.sh {{ playbook_dir }}/files/{{ env }}
+    cmd: scripts/build.sh ../files/{{ env }}
   become: yes
 
 - name: Copy HAProxy configuration.
