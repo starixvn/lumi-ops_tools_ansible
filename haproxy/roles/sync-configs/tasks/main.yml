@@ -4,9 +4,14 @@
     state: directory
   become: yes
 
+- name: Build HAProxy configurations
+  script:
+    cmd: scripts/build.sh {{ playbook_dir }}/files/{{ env }}
+  become: yes
+
 - name: Copy HAProxy configuration.
   template:
-    src: 'files/{{ env }}/haproxy.cfg'
+    src: 'files/haproxy.cfg'
     dest: '{{ working_path }}/{{ config_filename }}'
   become: yes
 
