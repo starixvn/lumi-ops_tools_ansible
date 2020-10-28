@@ -12,7 +12,7 @@
 
 - name: Build HAProxy configurations
   assemble:
-    src: '{{ working_path }}/config'
+    src: '{{ working_path }}/config/{{ env }}'
     dest: '{{ working_path }}/{{ config_filename }}'
   become: yes
 
