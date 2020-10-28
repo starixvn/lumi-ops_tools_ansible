@@ -37,7 +37,7 @@
     state: present
 
 - name: Check HAProxy config
-  community.general.docker_container:
+  docker_container:
     name: haproxy-check-config
     image: haproxy-check-config
     command: haproxy -c -V -f /etc/haproxy/haproxy.cfg
