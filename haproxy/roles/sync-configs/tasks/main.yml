@@ -5,15 +5,16 @@
   become: yes
 
 - name: Build HAProxy configurations
-  script:
-    cmd: scripts/build.sh ../files/{{ env }}
-  become: yes
-
-- name: Copy HAProxy configuration.
-  template:
-    src: 'haproxy.cfg'
+  assemble:
+    src: files/{{ env }}
     dest: '{{ working_path }}/{{ config_filename }}'
   become: yes
+
+# - name: Copy HAProxy configuration.
+#   template:
+#     src: 'haproxy.cfg'
+#     dest: '{{ working_path }}/{{ config_filename }}'
+#   become: yes
 
 - name: Copy whitelist configuration.
   template:
