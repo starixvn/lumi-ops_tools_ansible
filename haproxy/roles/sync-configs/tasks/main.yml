@@ -34,6 +34,10 @@
     state: present
   become: yes
 
+- name: Remove HAProxy image for syntax check
+  shell: docker image rm haproxy-check-config
+  ignore_errors: yes
+
 - name: Build HAProxy container for syntax check
   docker_image:
     name: haproxy-check-config
