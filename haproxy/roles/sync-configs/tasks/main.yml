@@ -14,7 +14,7 @@
   assemble:
     src: '{{ working_path }}/config/{{ env }}'
     dest: '{{ working_path }}/{{ config_filename }}'
-    regexp: '^.*.cfg'
+    regexp: '/*/*.cfg'
   become: yes
 
 # - name: Copy HAProxy configuration.
