@@ -11,7 +11,7 @@
 
 - name: Copy HAProxy configuration.
   template:
-    src: 'files/haproxy.cfg'
+    src: 'haproxy.cfg'
     dest: '{{ working_path }}/{{ config_filename }}'
   become: yes
 
