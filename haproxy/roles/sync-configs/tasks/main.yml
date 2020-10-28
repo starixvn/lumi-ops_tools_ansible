@@ -16,14 +16,29 @@
     dest: '{{ working_path }}/{{ config_filename }}'
   become: yes
 
-# - name: Copy HAProxy configuration.
-#   template:
-#     src: 'haproxy.cfg'
-#     dest: '{{ working_path }}/{{ config_filename }}'
-#   become: yes
-
 - name: Copy whitelist configuration.
   template:
     src: 'files/whitelisted.ips'
     dest: '{{ working_path }}/whitelisted.ips'
   become: yes
+
+- name: Copy HAProxy Dockerfile.
+  copy:
+    src: 'files/Dockerfile'
+    dest: '{{ working_path }}'
+  become: yes
+
+- name: Build HAProxy container for syntax check
+  docker_image:
+    name: haproxy-check-config
+    build:
+      path: '{{ working_path }}'
+      source: build
+    state: present
+
+- name: Check HAProxy config
+  community.general.docker_container:
+    name: haproxy-check-config
+    image: haproxy-check-config
+    command: haproxy -c -V -f /etc/haproxy/haproxy.cfg
+    auto_remove: yes
