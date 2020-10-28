@@ -7,12 +7,12 @@
 - name: Copy HAProxy configuration.
   copy:
     src: 'files/{{ env }}'
-    dest: '{{ working_path }}'
+    dest: '{{ working_path }}/config'
   become: yes
 
 - name: Build HAProxy configurations
   assemble:
-    src: '{{ working_path }}'
+    src: '{{ working_path }}/config'
     dest: '{{ working_path }}/{{ config_filename }}'
   become: yes
 
