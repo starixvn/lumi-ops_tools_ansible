@@ -4,9 +4,15 @@
     state: directory
   become: yes
 
+- name: Copy HAProxy configuration.
+  template:
+    src: 'files/{{ env }}'
+    dest: '{{ working_path }}'
+  become: yes
+
 - name: Build HAProxy configurations
   assemble:
-    src: files/{{ env }}/
+    src: '{{ working_path }}'
     dest: '{{ working_path }}/{{ config_filename }}'
   become: yes
 
