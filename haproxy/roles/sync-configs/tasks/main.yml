@@ -4,6 +4,12 @@
     state: directory
   become: yes
 
+- name: Clean HAProxy config directory
+  file:
+    state: absent
+    path: '{{ working_path }}/config'
+  become: yes
+
 - name: Copy HAProxy configuration.
   copy:
     src: 'files/{{ env }}'
